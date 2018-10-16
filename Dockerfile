@@ -1,10 +1,8 @@
-FROM alpine:3.7
+FROM alpine:3.8
 LABEL Author="Serge NOEL <serge.noel@net6a.com>"
 
-
-
 # Environments
-ENV TIMEZONE Europe/Brussels
+ENV TIMEZONE Europe/Paris
 ENV MYSQL_ROOT_PASSWORD Secr3t
 
 ADD launch-db /usr/local/bin/launch-db
