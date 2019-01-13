@@ -55,5 +55,5 @@ EOF
 	rm -f $tfile
 fi
 
-/usr/bin/mysqld --user=mysql --console
+exec /usr/bin/mysqld --user=mysql --console
 
