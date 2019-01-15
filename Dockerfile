@@ -1,9 +1,8 @@
 FROM alpine:3.8
-LABEL Author="Serge NOEL <serge.noel@net6a.com>"
+LABEL Author="Serge NOEL <serge.noel@easylinux.fr>"
 
 # Environments
-ENV TIMEZONE Europe/Bruxelles
-ENV MYSQL_ROOT_PASSWORD Secr3t
+ENV TIMEZONE Europe/Paris
 
 ADD launch-db /usr/local/bin/launch-db
 
@@ -19,10 +18,5 @@ EXPOSE 3306
 
 VOLUME ["/var/lib/mysql"]
 
-
 # Entry point
 ENTRYPOINT ["/usr/local/bin/launch-db"]
-
-
-
-
