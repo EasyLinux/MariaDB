@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.8
 LABEL Author="Serge NOEL <serge.noel@easylinux.fr>"
 
 # Environments
