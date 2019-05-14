@@ -12,7 +12,7 @@ ENV MYSQL_ROOT_PASSWORD=ChangeMe
 ADD launch-db /usr/local/bin/launch-db
 
 RUN apk update \
-    && apk add mariadb mariadb-client \
+    && apk add mariadb \
     && apk add --update tzdata \
     && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo "${TIMEZONE}" > /etc/timezone \
