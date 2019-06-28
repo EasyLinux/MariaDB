@@ -8,7 +8,7 @@ Ce conteneur est basé sur Alpine Linux version 3.9 afin d'obtenir un conteneur 
 Il s'agit d'une installation standard de MariaDb.
 Lors du lancement du conteneur, le script *launch* est lancé via la commande CMD du Dockerfile. Cette commande peut en conséquence être neutralisée en lancant directement une autre commande.
 
-### Launch-db
+### Launch (/usr/local/bin/launch)
 Lors du lancement du script, le système vérifie la présence de la base *test* dans l'aborescence /var/lib/mysql. 
 Si cette base n'est pas trouvée, cela signifie que le volume contient déjà une base, le script lance le serveur mysqld avec exec (afin de transmettre le kill -TERM) lors de l'arrêt du conteneur.
 
