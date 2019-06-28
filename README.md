@@ -4,13 +4,14 @@
 Voici mon conteneur Mariadb, c'est un conteneur qui permet d'illustrer l'utilisation de Docker.
 
 ## Fonctionnement
-Ce conteneur est basé sur Alpine Linux version 3.8 afin d'obtenir un conteneur minimal. 
+Ce conteneur est basé sur Alpine Linux version 3.9 afin d'obtenir un conteneur minimal. 
 Il s'agit d'une installation standard de MariaDb.
-Lors du lancement du conteneur, le script *launch-db* est lancé via la commande CMD du Dockerfile. Cette commande peut en conséquence être neutralisée en lancant directement une autre commande.
+Lors du lancement du conteneur, le script *launch* est lancé via la commande CMD du Dockerfile. Cette commande peut en conséquence être neutralisée en lancant directement une autre commande.
 
 ### Launch-db
-Lors du lancement du script, le système vérifie la présence de la base mysql dans l'aborescence /var/lib/mysql. 
-Si cette base est trouvée, cela signifie que le volume contient une base, le script lance le serveur mysqld avec exec (afin de transmettre le kill -TERM) lors de l'arrêt du conteneur.
+Lors du lancement du script, le système vérifie la présence de la base *test* dans l'aborescence /var/lib/mysql. 
+Si cette base n'est pas trouvée, cela signifie que le volume contient déjà une base, le script lance le serveur mysqld avec exec (afin de transmettre le kill -TERM) lors de l'arrêt du conteneur.
+
 Si la base n'est pas trouvée, alors le script crée une base et un compte associé grâce aux variables d'environnement passées:
 * **MYSQL_ROOT_PASSWORD**    mot de passe root pour MariaDB
 * **MYSQL_DATABASE**         nom de la base à créer
@@ -30,4 +31,5 @@ Pour lancer le conteneur sans activer le script :
 > docker run -it -v VolDB:/var/lib/mysql easylinux/mariadb /bin/sh
   
 **NB:** 
-Pour des raisons de sécurité, il est déconseillé de publier le port *3306*, nous vous conseillons plutôt de dédier un réseau.
+* Pour des raisons de sécurité, il est déconseillé de publier le port *3306*, nous vous conseillons plutôt de dédier un réseau.
+* Le paquet mariadb-client n'est pas présent dans le conteneur, seule le moteur de la base s'y trouve

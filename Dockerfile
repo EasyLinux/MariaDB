@@ -1,27 +1,14 @@
 FROM alpine:3.9
-LABEL Author="Serge NOEL <serge.noel@easylinux.fr>"
+LABEL author="Serge NOEL <serge.noel@easylinux.fr>" \
+      app="MariaDb" \
+      version="10.3"
 
-# Environments
-ENV TIMEZONE Europe/Paris
-# Passer ces variables lors du premier lancement du container, sinon, ce sera les valeurs ci-bas
-ENV MYSQL_DATABASE=Default
-ENV MYSQL_USER=Default
-ENV MYSQL_PASSWORD=ChangeMe
-ENV MYSQL_ROOT_PASSWORD=ChangeMe
-
-ADD launch-db /usr/local/bin/launch-db
-
-RUN apk update \
-    && apk add mariadb \
-    && apk add --update tzdata \
-    && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
-    && echo "${TIMEZONE}" > /etc/timezone \
-    && chmod a+x /usr/local/bin/launch-db 
-
-# Expose ports
+RUN apk add mariadb 
+RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
+COPY Files/ /
 EXPOSE 3306
+VOLUME /var/lib/mysql
+RUN ln -s /dev/stderr /var/log/mysql.err
 
-VOLUME ["/var/lib/mysql"]
-
-# Entry point
-ENTRYPOINT ["/usr/local/bin/launch-db"]
+CMD /usr/local/bin/launch
+ 
