@@ -32,4 +32,4 @@ Pour lancer le conteneur sans activer le script :
   
 **NB:** 
 * Pour des raisons de sécurité, il est déconseillé de publier le port *3306*, nous vous conseillons plutôt de dédier un réseau.
-* Le paquet mariadb-client n'est pas présent dans le conteneur, seule le moteur de la base s'y trouve
+* Le paquet mariadb-client n'est pas présent dans le conteneur, seul le moteur de la base s'y trouve
