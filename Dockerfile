@@ -4,7 +4,6 @@ LABEL author="Serge NOEL <serge.noel@easylinux.fr>" \
       version="10.3.17"
 
 RUN apk add mariadb \ 
-    && mysql_install_db --user=mysql --datadir=/var/lib/mysql \
     && mkdir /run/mysqld \
     && chown mysql: /run/mysqld \
     && sed -i "s/skip-networking/# skip-networking/g" /etc/my.cnf.d/mariadb-server.cnf
