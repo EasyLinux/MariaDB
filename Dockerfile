@@ -1,7 +1,7 @@
-FROM alpine:3.9
+FROM alpine:3.10
 LABEL author="Serge NOEL <serge.noel@easylinux.fr>" \
       app="MariaDb" \
-      version="10.3"
+      version="10.3.17"
 
 RUN apk add mariadb \ 
     && mysql_install_db --user=mysql --datadir=/var/lib/mysql \

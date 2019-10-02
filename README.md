@@ -4,7 +4,7 @@
 Voici mon conteneur Mariadb, c'est un conteneur qui permet d'illustrer l'utilisation de Docker.
 
 ## Fonctionnement
-Ce conteneur est basé sur Alpine Linux version 3.9 afin d'obtenir un conteneur minimal. 
+Ce conteneur est basé sur Alpine Linux version 3.10 afin d'obtenir un conteneur minimal. 
 Il s'agit d'une installation standard de MariaDb.
 Lors du lancement du conteneur, le script *launch* est lancé via la commande CMD du Dockerfile. Cette commande peut en conséquence être neutralisée en lancant directement une autre commande.
 
