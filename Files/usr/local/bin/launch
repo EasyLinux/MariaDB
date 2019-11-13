@@ -47,7 +47,14 @@ if [ ! -d "/var/lib/mysql/test" ]; then
   echo "OK"
   echo -n "  Cleaning                  "
   kill -TERM $(pidof mysqld)
-  sleep 5 
+  # Supprimer les variables d'environnement
+  unset MYSQL_DATABASE
+  unset MYSQL_PASSWORD
+  unset MYSQL_USER
+  unset PASSWD
+  unset MYSQL_ROOT_PASSWORD
+  unset ROOTPASS
+  sleep 5
   echo "OK"
 fi
 
