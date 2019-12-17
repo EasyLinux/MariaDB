@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$MYSQL_ROOT_PASSWORD" = "" ]; then
+  echo "Le mot de passe root n'est pas défini, l'installation automatique ne peut être faite,"
+  echo "veuillez entrer dans le conteneur et lancer 'installdb'"
+  exit 1
+fi
 if [ ! -d "/var/lib/mysql/test" ]; then
   mysql_install_db --user=mysql --datadir=/var/lib/mysql
   echo "Install User Database"
