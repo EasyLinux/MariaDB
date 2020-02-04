@@ -11,5 +11,5 @@ COPY Files/ /
 EXPOSE 3306
 VOLUME /var/lib/mysql
 
-CMD /usr/local/bin/launch
+CMD ["/usr/local/bin/launch"]
  
