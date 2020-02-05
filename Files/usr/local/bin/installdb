@@ -42,5 +42,5 @@ unset $DB
 kill -TERM $(pidof mysqld)
 echo "OK"
 
-echo "Starting Mariadb server..."
-exec mysqld --user=mysql --datadir=/var/lib/mysql --console
+echo "La base est prête"
+echo "Veuillez relancer le container"
