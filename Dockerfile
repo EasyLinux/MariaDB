@@ -1,12 +1,15 @@
-FROM alpine:3.11
+FROM debian:buster
 LABEL author="Serge NOEL <serge.noel@easylinux.fr>" \
       app="MariaDb" \
-      version="10.4.12"
+      version="10.3.25"
 
-RUN apk add mariadb \ 
-    && mkdir /run/mysqld \
-    && chown mysql: /run/mysqld \
-    && sed -i "s/skip-networking/# skip-networking/g" /etc/my.cnf.d/mariadb-server.cnf
+RUN apt-get update \
+    && apt-get install -y mariadb-server 
+RUN chown -R mysql: /var/log/mysql \
+    && rm /var/log/mysql/error.log \
+    && ln -s /dev/stdout /var/log/mysql/error.log \
+    && rm -rf /var/lib/mysql/*
+    
 COPY Files/ /
 EXPOSE 3306
 VOLUME /var/lib/mysql

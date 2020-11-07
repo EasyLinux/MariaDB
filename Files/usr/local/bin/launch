@@ -19,5 +19,6 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 
 fi
 
+chown -R  mysql: /var/log/mysql
 echo "Starting Mariadb server..."
 exec mysqld --user=mysql --datadir=/var/lib/mysql --console

@@ -16,7 +16,7 @@ echo -n "  Launch mariadb server ...  "
 exec mysqld_safe & 2> /dev/null
 echo "OK"
 echo -n "  Add mariadb-client ...     " 
-apk add mariadb-client > /dev/null
+apt-get install -y mariadb-client > /dev/null
 echo "OK"
 echo -n "  Assigning $HOSTNAME as mysql_root_password  "
 /usr/bin/mysqladmin -u root password "$ROOTPASS"
@@ -31,9 +31,6 @@ echo "OK"
 echo -n "  Dropping test database    "
 echo "DROP DATABASE test;" | mysql -u root --password="$ROOTPASS"
 echo "OK"
-echo -n "  Remove mariadb-client     "
-apk del mariadb-client > /dev/null
-echo "OK"
 echo -n "  Cleaning                  "
 unset $ROOTPASS
 unset $PASS
@@ -43,4 +40,6 @@ kill -TERM $(pidof mysqld)
 echo "OK"
 
 echo "La base est prête"
-echo "Veuillez relancer le container"
+echo "Le conteneur sera relancé dans 30 secondes"
+sleep 30
+kill -TERM 1
